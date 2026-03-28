@@ -1,7 +1,0 @@
-Copy/paste into your Learning Suite submission comment (Bootstrap #notcoveredinthevideos):
-
-1) Toast — file: frontend/src/components/BookList.tsx — Bootstrap Toast markup with id="addToCartToast", classes "toast" and "text-bg-success", attributes data-bs-autohide="true" and data-bs-delay="3200", and JavaScript Toast.getOrCreateInstance(...) from the "bootstrap" package when a book is added to the cart.
-
-2) Offcanvas — file: frontend/src/App.tsx — Bootstrap Offcanvas panel with id="cartOffcanvas", classes "offcanvas offcanvas-end", header close button with data-bs-dismiss="offcanvas", and the mobile navbar button uses data-bs-toggle="offcanvas" and data-bs-target="#cartOffcanvas" to open the cart preview.
-
-Also using Bootstrap Grid on the home page: frontend/src/pages/HomePage.tsx — container row with col-12 col-lg-8 (catalog) and col-12 col-lg-4 (cart summary), plus sticky-lg-top on the summary column.
