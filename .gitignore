@@ -1,0 +1,60 @@
+# --- Node / npm (root + frontend) ---
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.log
+
+# Vite
+dist/
+dist-ssr/
+*.local
+
+# Env files with secrets (keep .env.example committed if you use one)
+.env
+.env.*
+!.env.example
+
+# --- .NET ---
+**/bin/
+**/obj/
+**/out/
+*.user
+*.userosscache
+*.suo
+*.userprefs
+project.lock.json
+project.fragment.lock.json
+artifacts/
+publish/
+
+# NuGet
+*.nupkg
+*.snupkg
+**/packages/
+
+# --- SQLite (runtime sidecars; keep Bookstore.sqlite tracked) ---
+*.db-shm
+*.db-wal
+
+# --- IDE / editors ---
+.vs/
+.idea/
+*.swp
+*.swo
+*~
+
+# VS Code: ignore folder but allow shared extension recommendations
+.vscode/*
+!.vscode/extensions.json
+
+# --- OS ---
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# --- Misc ---
+coverage/
+*.tmp
+*.temp

@@ -1,0 +1,22 @@
+@WaterProject.API_HostAddress = http://localhost:5076
+
+GET {{WaterProject.API_HostAddress}}/api/Books?page=1&pageSize=5&sortOrder=asc
+Accept: application/json
+
+###
+
+POST {{WaterProject.API_HostAddress}}/api/Books
+Content-Type: application/json
+
+{
+  "title": "Sample Title",
+  "author": "Sample Author",
+  "publisher": "Sample Press",
+  "isbn": "978-0000000000",
+  "classification": "Fiction",
+  "category": "General",
+  "pageCount": 100,
+  "price": 12.99
+}
+
+###

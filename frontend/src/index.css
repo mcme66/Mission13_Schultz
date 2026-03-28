@@ -1,0 +1,12 @@
+/* Small tweaks on top of Bootstrap — keep custom CSS minimal */
+body {
+  margin: 0;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.letter-spacing {
+  letter-spacing: 0.08em;
+}
