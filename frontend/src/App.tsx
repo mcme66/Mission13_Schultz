@@ -2,6 +2,7 @@ import { Link, Route, Routes } from 'react-router-dom'
 import { CartSummary } from './components/CartSummary'
 import { CartProvider, useCart } from './context/CartContext'
 import { AddBookPage } from './pages/AddBookPage'
+import { AdminBooksPage } from './pages/AdminBooksPage'
 import { CartPage } from './pages/CartPage'
 import { HomePage } from './pages/HomePage'
 
@@ -48,6 +49,9 @@ function AppShell() {
             <Link to="/extra" className="btn btn-outline-light btn-sm fw-semibold px-3">
               Add book
             </Link>
+            <Link to="/adminbooks" className="btn btn-outline-light btn-sm fw-semibold px-3">
+              Admin
+            </Link>
           </div>
         </div>
       </nav>
@@ -60,6 +64,7 @@ function AppShell() {
                 <Route path="/" element={<HomePage />} />
                 <Route path="/cart" element={<CartPage />} />
                 <Route path="/extra" element={<AddBookPage />} />
+                <Route path="/adminbooks" element={<AdminBooksPage />} />
               </Routes>
             </div>
           </div>

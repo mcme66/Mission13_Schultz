@@ -39,6 +39,17 @@ public class BooksController(IBookRepository books) : ControllerBase
     }
 
     /// <summary>
+    /// Returns a single book by id.
+    /// </summary>
+    [HttpGet("{id:int}")]
+    public async Task<IActionResult> GetBookById([FromRoute] int id)
+    {
+        var book = await books.GetBookByIdAsync(id);
+        if (book is null) return NotFound();
+        return Ok(book);
+    }
+
+    /// <summary>
     /// Adds a new book. All fields are required and validated.
     /// </summary>
     [HttpPost]
@@ -49,5 +60,30 @@ public class BooksController(IBookRepository books) : ControllerBase
 
         var book = await books.AddBookAsync(dto);
         return StatusCode(StatusCodes.Status201Created, book);
+    }
+
+    /// <summary>
+    /// Updates an existing book by id. All fields are required and validated.
+    /// </summary>
+    [HttpPut("{id:int}")]
+    public async Task<IActionResult> UpdateBook([FromRoute] int id, [FromBody] CreateBookDto dto)
+    {
+        if (!ModelState.IsValid)
+            return ValidationProblem(ModelState);
+
+        var updated = await books.UpdateBookAsync(id, dto);
+        if (updated is null) return NotFound();
+        return Ok(updated);
+    }
+
+    /// <summary>
+    /// Deletes a book by id.
+    /// </summary>
+    [HttpDelete("{id:int}")]
+    public async Task<IActionResult> DeleteBook([FromRoute] int id)
+    {
+        var ok = await books.DeleteBookAsync(id);
+        if (!ok) return NotFound();
+        return NoContent();
     }
 }

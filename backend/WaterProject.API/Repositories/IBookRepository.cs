@@ -13,4 +13,10 @@ public interface IBookRepository
     Task<IReadOnlyList<string>> GetCategoriesAsync();
 
     Task<Book> AddBookAsync(CreateBookDto dto);
+
+    Task<Book?> GetBookByIdAsync(int id);
+
+    Task<Book?> UpdateBookAsync(int id, CreateBookDto dto);
+
+    Task<bool> DeleteBookAsync(int id);
 }

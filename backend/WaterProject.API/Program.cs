@@ -20,7 +20,23 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy(corsPolicy, policy =>
     {
-        policy.WithOrigins("http://localhost:5173", "http://127.0.0.1:5173")
+        var allowedOrigins = new List<string>
+        {
+            "http://localhost:5173",
+            "http://127.0.0.1:5173"
+        };
+
+        var extraOrigins = builder.Configuration["CORS_ALLOWED_ORIGINS"];
+        if (!string.IsNullOrWhiteSpace(extraOrigins))
+        {
+            allowedOrigins.AddRange(
+                extraOrigins
+                    .Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)
+            );
+        }
+
+        policy
+            .WithOrigins(allowedOrigins.Distinct(StringComparer.OrdinalIgnoreCase).ToArray())
             .AllowAnyHeader()
             .AllowAnyMethod();
     });

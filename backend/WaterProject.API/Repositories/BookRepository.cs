@@ -74,4 +74,42 @@ public class BookRepository(BookstoreDbContext db) : IBookRepository
         await db.SaveChangesAsync();
         return book;
     }
+
+    public async Task<Book?> GetBookByIdAsync(int id)
+    {
+        if (id <= 0) return null;
+        return await db.Books.FirstOrDefaultAsync(b => b.BookID == id);
+    }
+
+    public async Task<Book?> UpdateBookAsync(int id, CreateBookDto dto)
+    {
+        if (id <= 0) return null;
+
+        var book = await db.Books.FirstOrDefaultAsync(b => b.BookID == id);
+        if (book is null) return null;
+
+        book.Title = dto.Title.Trim();
+        book.Author = dto.Author.Trim();
+        book.Publisher = dto.Publisher.Trim();
+        book.ISBN = dto.ISBN.Trim();
+        book.Classification = dto.Classification.Trim();
+        book.Category = dto.Category.Trim();
+        book.PageCount = dto.PageCount;
+        book.Price = dto.Price;
+
+        await db.SaveChangesAsync();
+        return book;
+    }
+
+    public async Task<bool> DeleteBookAsync(int id)
+    {
+        if (id <= 0) return false;
+
+        var book = await db.Books.FirstOrDefaultAsync(b => b.BookID == id);
+        if (book is null) return false;
+
+        db.Books.Remove(book);
+        await db.SaveChangesAsync();
+        return true;
+    }
 }
