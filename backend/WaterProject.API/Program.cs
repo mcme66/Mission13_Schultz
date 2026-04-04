@@ -23,7 +23,9 @@ builder.Services.AddCors(options =>
         var allowedOrigins = new List<string>
         {
             "http://localhost:5173",
-            "http://127.0.0.1:5173"
+            "http://127.0.0.1:5173",
+            "https://mission13schultzfrontend-atfmeze5fxaretaf.mexicocentral-01.azurewebsites.net",
+            "https://thankful-mushroom-0c499111e.7.azurestaticapps.net/"
         };
 
         var extraOrigins = builder.Configuration["CORS_ALLOWED_ORIGINS"];
