@@ -1,7 +1,7 @@
 import { type FormEvent, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
-const API_BASE = import.meta.env.VITE_API_URL ?? 'http://localhost:5076'
+const API_BASE = import.meta.env.VITE_API_URL ?? 'https://mission13schultzbackend-atfmeze5fxaretaf.mexicocentral-01.azurewebsites.net'
 
 type FormFields = {
   title: string

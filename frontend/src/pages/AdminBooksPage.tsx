@@ -2,7 +2,7 @@ import { type FormEvent, useCallback, useEffect, useMemo, useState } from 'react
 import { Link } from 'react-router-dom'
 import { type Book } from '../components/BookList'
 
-const API_BASE = import.meta.env.VITE_API_URL ?? 'http://localhost:5076'
+const API_BASE = import.meta.env.VITE_API_URL ?? 'https://mission13schultzbackend-atfmeze5fxaretaf.mexicocentral-01.azurewebsites.net'
 
 type PagedBooksResponse = {
   books: Book[]
