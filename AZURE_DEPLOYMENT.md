@@ -123,6 +123,16 @@ Test:
 - Add the **`AZURE_STATIC_WEB_APPS_API_TOKEN`** repository secret as described in [GitHub secret for the deployment token](#github-secret-for-the-deployment-token-required) above.
 - **Pull requests from forks** do not receive repository secrets; deploy from a branch on the same repo, or adjust workflow permissions (not typical for class assignments).
 
+### `No matching Static Web App was found or the api key was invalid`
+The deploy action is sending a token, but Azure does not recognize it for any Static Web App. Fix it by aligning the **GitHub secret** with the **correct** resource and a **current** token.
+
+1. In **Azure Portal**, open the **Static Web Apps** resource you intend to use (not your App Service API). Each SWA has its **own** deployment token.
+2. On that resource: **Overview** → **Manage deployment token** (or **Settings** → **Deployment tokens**) → copy the full token.
+3. In **GitHub** → **Settings** → **Secrets and variables** → **Actions** → edit **`AZURE_STATIC_WEB_APPS_API_TOKEN`** → paste the new value → save.
+4. Re-run the workflow.
+
+Also check: you did not paste an App Service key, Storage key, or subscription key by mistake; the value must be the **Static Web App deployment token** only. If you **reset** the token in Azure, you must update the GitHub secret immediately—old tokens stop working.
+
 ### The frontend can’t reach the API
 - Check `VITE_API_URL` in Static Web Apps environment variables.
 - Check `CORS_ALLOWED_ORIGINS` in App Service includes the SWA URL exactly.
