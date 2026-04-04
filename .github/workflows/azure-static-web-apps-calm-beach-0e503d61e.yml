@@ -48,7 +48,7 @@ jobs:
       - name: Deploy frontend to Azure Static Web App
         uses: Azure/static-web-apps-deploy@v1
         with:
-          azure_static_web_apps_api_token: '5c9af236a281a248ef834745398765180f9f172bb74ffe94e0bafe95ac8136c701-6d7838cf-99f4-43b4-be00-5097afe724eb01e17020e503d61e'
+          azure_static_web_apps_api_token: '29935c53d48a54db290ffd186ec4ba4b69d6eb8287a99db6eb5e663c913ca71101-241c06cf-3c8b-4a89-890c-b3dd8632c46001e17020e503d61e'
           action: "upload"
           app_location: "frontend"
           api_location: "" # optional, leave blank if no Azure Functions
@@ -64,5 +64,5 @@ jobs:
         id: closepullrequest
         uses: Azure/static-web-apps-deploy@v1
         with:
-          azure_static_web_apps_api_token: '5c9af236a281a248ef834745398765180f9f172bb74ffe94e0bafe95ac8136c701-6d7838cf-99f4-43b4-be00-5097afe724eb01e17020e503d61e'
+          azure_static_web_apps_api_token: '29935c53d48a54db290ffd186ec4ba4b69d6eb8287a99db6eb5e663c913ca71101-241c06cf-3c8b-4a89-890c-b3dd8632c46001e17020e503d61e'
           action: "close"
