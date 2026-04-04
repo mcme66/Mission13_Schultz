@@ -4,7 +4,7 @@ import { Toast } from 'bootstrap'
 import { useCart } from '../context/CartContext'
 import { saveCatalogReturnSearch } from '../lib/catalogReturnStorage'
 
-const API_BASE = import.meta.env.VITE_API_URL ?? 'http://localhost:5076'
+const API_BASE = import.meta.env.VITE_API_URL ?? 'mission13schultzbackend-atfmeze5fxaretaf.mexicocentral-01.azurewebsites.net'
 
 export type Book = {
   bookID: number
