@@ -78,6 +78,17 @@ If you get JSON back, the API is up.
 
 Azure will create a GitHub Action and run a build/deploy automatically.
 
+### GitHub secret for the deployment token (required)
+The workflow [`.github/workflows/azure-static-web-apps-calm-beach-0e503d61e.yml`](.github/workflows/azure-static-web-apps-calm-beach-0e503d61e.yml) expects a repository secret named **`AZURE_STATIC_WEB_APPS_API_TOKEN`**. If this secret is missing or empty, the deploy step fails with `deployment_token was not provided`.
+
+1. In **Azure Portal** → your Static Web App → **Overview** → **Manage deployment token** (or **Settings** → **Deployment tokens**) → copy the token.
+2. In **GitHub** → your repo → **Settings** → **Secrets and variables** → **Actions** → **New repository secret**:
+   - **Name**: `AZURE_STATIC_WEB_APPS_API_TOKEN` (exactly; or edit the workflow to use the auto-generated name Azure added, if different)
+   - **Value**: paste the token from step 1.
+3. Save and re-run the failed workflow (or push a commit).
+
+If you reset the token in Azure, update this secret with the new value.
+
 ### Set the frontend API URL
 Your frontend uses:
 - `VITE_API_URL` (with a localhost fallback)
@@ -108,6 +119,10 @@ Test:
   - Delete a book (DELETE)
 
 ## Troubleshooting
+### `deployment_token was not provided` (GitHub Actions)
+- Add the **`AZURE_STATIC_WEB_APPS_API_TOKEN`** repository secret as described in [GitHub secret for the deployment token](#github-secret-for-the-deployment-token-required) above.
+- **Pull requests from forks** do not receive repository secrets; deploy from a branch on the same repo, or adjust workflow permissions (not typical for class assignments).
+
 ### The frontend can’t reach the API
 - Check `VITE_API_URL` in Static Web Apps environment variables.
 - Check `CORS_ALLOWED_ORIGINS` in App Service includes the SWA URL exactly.
